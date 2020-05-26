@@ -147,9 +147,9 @@ public class NotesListActivity extends AppCompatActivity implements SearchView.O
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.btn_settings:
-                startActivity(new Intent(NotesListActivity.this, SettingsActivity.class));
-                return (true);
+//            case R.id.btn_settings:
+//                startActivity(new Intent(NotesListActivity.this, SettingsActivity.class));
+//                return (true);
             case R.id.btn_sort:
                 if (sortAlphabetical) {
                     item.setIcon(R.drawable.alphabetical_to_numerical);

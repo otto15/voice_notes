@@ -121,13 +121,13 @@ public class NoteActivity extends AppCompatActivity {
                 noteText.setSelection(noteText.getText().length());
                 return (true);
 
-            case R.id.btn_share:
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, noteText.getText().toString());
-                sendIntent.setType("text/plain");
-                startActivity(Intent.createChooser(sendIntent, getString(R.string.share_to)));
-                return (true);
+//            case R.id.btn_share:
+//                Intent sendIntent = new Intent();
+//                sendIntent.setAction(Intent.ACTION_SEND);
+//                sendIntent.putExtra(Intent.EXTRA_TEXT, noteText.getText().toString());
+//                sendIntent.setType("text/plain");
+//                startActivity(Intent.createChooser(sendIntent, getString(R.string.share_to)));
+//                return (true);
 
             case R.id.btn_delete:
                 dialog = new AlertDialog.Builder(NoteActivity.this, R.style.AlertDialogTheme)

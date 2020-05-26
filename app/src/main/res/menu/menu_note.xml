@@ -16,9 +16,9 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/btn_share"
-        android:icon="@drawable/ic_share_white_24dp"
-        android:title="@string/share"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/btn_record"
+        android:icon="@drawable/ic_microphone_24dp"
+        android:title="Record"
+        app:showAsAction="always" />
 
 </menu>

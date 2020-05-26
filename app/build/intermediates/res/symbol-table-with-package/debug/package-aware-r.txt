@@ -1038,6 +1038,7 @@ drawable divider_settings
 drawable ic_add_circle_outline_white_24dp
 drawable ic_bg
 drawable ic_delete_white_24dp
+drawable ic_microphone_24dp
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
@@ -1118,9 +1119,8 @@ id bottom
 id brown
 id btn_apply
 id btn_delete
+id btn_record
 id btn_search
-id btn_settings
-id btn_share
 id btn_sort
 id btn_undo
 id buttonPanel
