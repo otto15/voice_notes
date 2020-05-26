@@ -1,0 +1,7 @@
+#Tue May 26 17:03:15 MSK 2020
+base.0=D\:\\Proganie\\android_projects\\Voice_Notes\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=D\:\\Proganie\\android_projects\\Voice_Notes\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
