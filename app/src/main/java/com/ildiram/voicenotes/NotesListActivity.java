@@ -164,6 +164,7 @@ public class NotesListActivity extends AppCompatActivity implements SearchView.O
                     ((Animatable) drawable).start();
             case R.id.btn_search:
                 return (true);
+
         }
         return (super.onOptionsItemSelected(item));
     }

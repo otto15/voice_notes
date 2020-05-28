@@ -15,10 +15,5 @@
         android:title="@string/undo"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/btn_record"
-        android:icon="@drawable/ic_microphone_24dp"
-        android:title="Record"
-        app:showAsAction="always" />
 
 </menu>

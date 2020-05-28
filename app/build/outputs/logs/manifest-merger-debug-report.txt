@@ -53,6 +53,10 @@ INJECTED from D:\Proganie\android_projects\Voice_Notes\app\src\main\AndroidManif
 		INJECTED from D:\Proganie\android_projects\Voice_Notes\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\Proganie\android_projects\Voice_Notes\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from D:\Proganie\android_projects\Voice_Notes\app\src\main\AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from D:\Proganie\android_projects\Voice_Notes\app\src\main\AndroidManifest.xml:4:22-64
 application
 ADDED from D:\Proganie\android_projects\Voice_Notes\app\src\main\AndroidManifest.xml:5:5-35:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\workplace\.gradle\caches\transforms-2\files-2.1\5742bf037679acc7e86191e557c86027\AndroidManifest.xml:22:5-20

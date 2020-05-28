@@ -1,5 +1,6 @@
 package com.ildiram.voicenotes;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,7 +10,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.speech.RecognizerIntent;
 import android.support.annotation.ColorInt;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.ColorUtils;
 import android.support.v7.app.AlertDialog;
@@ -17,18 +20,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class NoteActivity extends AppCompatActivity {
 
     private static final String EXTRA_NOTE_TITLE = "EXTRA_NOTE_TITLE";
-
+    protected static final int RESULT_SPEECH = 1;
     private boolean colourNavbar;
     private String title, note;
     private EditText noteText, titleText;
+    private FloatingActionButton btnSpeak;
     private AlertDialog dialog;
-
     private @ColorInt
+
     int colourPrimary, colourFont, colourBackground;
 
     public static Intent getStartIntent(Context context, String title) {
@@ -40,14 +51,15 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_note);
         titleText = findViewById(R.id.et_title);
         noteText = findViewById(R.id.et_note);
+        btnSpeak = findViewById(R.id.btn_record);
 
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
-
         // If activity started from a share intent
         if (Intent.ACTION_SEND.equals(action) && type != null) {
             if ("text/plain".equals(type)) {
@@ -73,8 +85,42 @@ public class NoteActivity extends AppCompatActivity {
             }
         }
 
+        View.OnClickListener listener= new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {//прослушивание кнопки
+                Intent intent = new Intent(//вызов голоса гугла
+                        RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                        "ru-RU");
+                try {//вывод текста
+                    startActivityForResult(intent, RESULT_SPEECH);
+                } catch (ActivityNotFoundException a) {//если текст не распознан
+                    Toast.makeText(getApplicationContext(),
+                            "текст не распознан",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        };
+        btnSpeak.setOnClickListener(listener);
+
         getSettings(PreferenceManager.getDefaultSharedPreferences(NoteActivity.this));
         applySettings();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent
+            data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case RESULT_SPEECH: {
+                if (resultCode == RESULT_OK && null != data) {
+                    ArrayList<String> text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    noteText.setText(text.get(0));
+                }
+                break;
+            }
+        }
     }
 
     @Override
